@@ -3,28 +3,42 @@
 <head>
   <title>Простой графический редактор</title>
   <style>
-    .canvas {
-      width: 500px;
-      height: 500px;
-      border: 1px solid black;
+    /* Стили для редактора */
+    #canvas {
+      border: 1px solid #000;
+      cursor: crosshair;
     }
   </style>
 </head>
 <body>
-  <h1>Простой графический редактор</h1>
-  
-  <div class="canvas"></div>
-  
+  <canvas id="canvas" width="500" height="500"></canvas>
   <script>
+    // JavaScript код для работы с редактором
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-    var canvas = document.querySelector('.canvas');
-    var ctx = canvas.getContext('2d');
-  
-    ctx.beginPath();
-    ctx.arc(250, 250, 100, 0, 2 * Math.PI);
-    ctx.fillStyle = 'red';
-    ctx.fill();
-    ctx.stroke();
+    let isDrawing = false;
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseout', stopDrawing);
+
+    function startDrawing(event) {
+      isDrawing = true;
+      draw(event);
+    }
+
+    function draw(event) {
+      if (!isDrawing) return;
+      const x = event.offsetX;
+      const y = event.offsetY;
+      ctx.fillRect(x, y, 2, 2);
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+    }
   </script>
 </body>
 </html>
