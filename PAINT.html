@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Простой графический редактор</title>
-  <style>
-    /* Стили для редактора */
-    #canvas {
-      border: 1px solid #000;
-      cursor: crosshair;
-    }
-  </style>
+	<title>Графический редактор</title>
+	<style>
+		/* Стили для редактора */
+		#canvas {
+			border: 1px solid #000;
+			cursor: crosshair;
+		}
+	</style>
 </head>
+
 <body>
-  <canvas id="canvas" width="500" height="500"></canvas>
-  <script>
-    // JavaScript код для работы с редактором
+	<input type="color" id="colorPicker">
+	<button onclick="clearCanvas()">Очистить</button>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	<script>
+		// JavaScript код для работы с редактором
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    const colorPicker = document.getElementById('colorPicker');
 
     let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
 
     canvas.addEventListener('mousedown', startDrawing);
     canvas.addEventListener('mousemove', draw);
@@ -26,19 +33,28 @@
 
     function startDrawing(event) {
       isDrawing = true;
-      draw(event);
+      [lastX, lastY] = [event.offsetX, event.offsetY];
     }
 
     function draw(event) {
       if (!isDrawing) return;
-      const x = event.offsetX;
-      const y = event.offsetY;
-      ctx.fillRect(x, y, 2, 2);
+      const color = colorPicker.value;
+      ctx.strokeStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(event.offsetX, event.offsetY);
+      ctx.stroke();
+      [lastX, lastY] = [event.offsetX, event.offsetY];
     }
 
     function stopDrawing() {
       isDrawing = false;
     }
-  </script>
+
+    function clearCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+	</script>
 </body>
+
 </html>
