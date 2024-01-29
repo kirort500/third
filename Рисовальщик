@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Простой графический редактор</title>
+  <style>
+    .canvas {
+      width: 500px;
+      height: 500px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Простой графический редактор</h1>
+  
+  <div class="canvas"></div>
+  
+  <script>
+
+    var canvas = document.querySelector('.canvas');
+    var ctx = canvas.getContext('2d');
+  
+    ctx.beginPath();
+    ctx.arc(250, 250, 100, 0, 2 * Math.PI);
+    ctx.fillStyle = 'red';
+    ctx.fill();
+    ctx.stroke();
+  </script>
+</body>
+</html>
