@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platformer Game</title>
+  <style>
+    .platform {
+      width: 100px;
+      height: 20px;
+      background-color: brown;
+      position: absolute;
+    }
+
+    .player {
+      width: 20px;
+      height: 20px;
+      background-color: blue;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="platform" style="left: 200px; bottom: 100px;"></div>
+  <div class="platform" style="left: 50px; bottom: 200px;"></div>
+  <div class="platform" style="left: 300px; bottom: 300px;"></div>
+
+  <div class="player" style="left: 0;"></div>
+
+  <script>
+    let isJumping = false;
+    let isFalling = false;
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "ArrowRight") {
+        moveRight();
+      } else if (event.key === "ArrowLeft") {
+        moveLeft();
+      } else if (event.key === "ArrowUp") {
+        jump();
+      }
+    });
+
+    function moveRight() {
+      let player = document.querySelector('.player');
+      let position = parseInt(player.style.left) || 0;
+      position += 10;
+      player.style.left = position + "px";
+    }
+    
+    function moveLeft() {
+      let player = document.querySelector('.player');
+      let position = parseInt(player.style.left) || 0;
+      position -= 10;
+      player.style.left = position + "px";
+    }
+    
+    function jump() {
+      if (!isJumping) {
+        isJumping = true;
+        let player = document.querySelector('.player');
+        let initialPosition = parseInt(player.style.bottom) || 0;
+        let jumpHeight = 100;
+        let jumpUp = setInterval(function() {
+          if (initialPosition >= jumpHeight) {
+            clearInterval(jumpUp);
+            let jumpDown = setInterval(function() {
+              if (initialPosition <= 0) {
+                clearInterval(jumpDown);
+                isJumping = false;
+              } else {
+                initialPosition -= 5;
+                player.style.bottom = initialPosition + 'px';
+              }
+            }, 30);
+          } else {
+            initialPosition += 5;
+            player.style.bottom = initialPosition + 'px';
+          }
+        }, 30);
+      }
+    }
+  </script>
+
+</body>
+</html>
