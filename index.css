@@ -1,20 +1,18 @@
-h1 {
-font-family: Impact, sans-serif;
-color: #CE5937;
-text-shadow: 5px 5px #558abb;
-}
-
-h1 {
-font-family: Impact, sans-serif;
-color: #CE5937;
-text-shadow: 5px 5px #558abb;
-}
-
 body {
-	font-family: Tahoma, Verdana, Geneva, sans-serif;
-	margin: 6em 6em;
-	font-weight: bold;
+ font-family: Tahoma, Verdana, Geneva, sans-serif;
+ margin: 6em 6em; font-weight: bold;
 }
+
+
+h1 {
+font-family: Impact, sans-serif;
+color: #CE5937;
+text-shadow: 5px 5px #558abb;
+}
+
+
+
+
 ul {
 	list-style-type: none;
 	padding: 0;
@@ -41,10 +39,7 @@ img {
 
 
 
-body {
- font-family: Tahoma, Verdana, Geneva, sans-serif;
- margin: 6em 6em; font-weight: bold;
-}
+
 
 ul {
  list-style-type: none; padding: 0;
