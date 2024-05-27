@@ -4,6 +4,12 @@ color: #CE5937;
 text-shadow: 5px 5px #558abb;
 }
 
+h1 {
+font-family: Impact, sans-serif;
+color: #CE5937;
+text-shadow: 5px 5px #558abb;
+}
+
 body {
 	font-family: Tahoma, Verdana, Geneva, sans-serif;
 	margin: 6em 6em;
@@ -83,5 +89,3 @@ a:hover #img3, a:focus #img3  {
 a:hover #img4, a:focus #img4  {
 	transform: scale(2) rotate(5deg);
 }
-
-
