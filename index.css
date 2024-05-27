@@ -8,7 +8,7 @@ h1 {
 font-family: Impact, sans-serif;
 color: #CE5937;
 text-shadow: 5px 5px #558abb;
-box-shadow: 6px 6px ##FFD700;
+box-shadow: 6px 6px 6px 6px #FFD700;
 }
 
 p {
